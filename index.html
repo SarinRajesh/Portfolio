@@ -1677,18 +1677,22 @@ This message was sent from your portfolio contact form.
         });
 
         // Profile image setup
-        window.addEventListener('load', function() {
-            const profileImg = document.getElementById('profileImage');
-            const img = new Image();
-            img.onload = function() {
-                profileImg.style.backgroundImage = 'url(profile.jpg)';
-                profileImg.innerHTML = '';
-            };
-            img.onerror = function() {
-                console.log('Profile image not found, using default icon');
-            };
-            img.src = 'profile.jpg';
-        });
+     // Profile image setup
+             window.addEventListener('load', function() {
+            const profileImg = document.getElementById('profileImage');
+            const img = new Image();
+            // Define the correct, case-sensitive file path
+            const imagePath = 'profile.JPG'; 
+
+            img.onload = function() {
+                profileImg.style.backgroundImage = `url(${imagePath})`; // <-- CHANGED
+                profileImg.innerHTML = '';
+            };
+            img.onerror = function() {
+                console.log('Profile image not found, using default icon');
+            };
+            img.src = imagePath; // <-- CHANGED
+        });
 
         // Typing effect for hero title
         function typeWriter(element, text, speed = 150) {
